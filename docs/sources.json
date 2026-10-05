@@ -1,0 +1,30 @@
+{
+  "accessed": "2026-10-05",
+  "method": "Public thread reader and official X public embed; exploratory qualitative sample",
+  "sources": [
+    {
+      "id": "R6",
+      "url": "https://www.reddit.com/r/ADHD/comments/1w3smml/avoid_messages_when_overwhelmed/",
+      "date": "Search index: 2026-08-31",
+      "access": "Public thread and visible comments read with the web reader.",
+      "observation": "The discussion describes avoiding messages when other work is demanding. It supplies a workflow observation, not diagnostic or treatment evidence.",
+      "theme": "reply"
+    },
+    {
+      "id": "R7",
+      "url": "https://www.reddit.com/r/ADHD/comments/1wm31ed/i_feel_completely_overwhelmed_by_texting_people/",
+      "date": "Search index: 2026-09-21",
+      "access": "Public thread and visible comments read with the web reader.",
+      "observation": "The author describes a growing reply queue and pressure to compose the right response. Replies discuss drafting separately and returning at a chosen time.",
+      "theme": "reply"
+    },
+    {
+      "id": "R8",
+      "url": "https://www.reddit.com/r/AuDHDWomen/comments/1wx9nn1/need_help_with_replying_to_texts_and_messages/",
+      "date": "Search index: 2026-10-04",
+      "access": "Public thread and visible comments read with the web reader.",
+      "observation": "The author describes a backlog across multiple apps. A reply points out that answering everyone at once can produce another wave of responses.",
+      "theme": "reply"
+    }
+  ]
+}

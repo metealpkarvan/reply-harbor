@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Make room for one honest reply." />
+    <meta name="theme-color" content="#365ac5" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Reply Harbor · Mete Alp Karvan</title>
+    <link rel="icon" href="assets/icon.svg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="reply-harbor">
+    <a class="skip" href="#main"
+      ><span data-tr="İçeriğe geç" data-en="Skip to content"
+        >İçeriğe geç</span
+      ></a
+    >
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="./"
+          ><img src="assets/icon.svg" alt="" />Reply Harbor</a
+        >
+        <nav aria-label="App">
+          <span class="local"
+            ><span
+              data-tr="Cihazında · hesapsız"
+              data-en="On your device · no account"
+              >Cihazında · hesapsız</span
+            ></span
+          ><a href="https://github.com/metealpkarvan/reply-harbor">GitHub ↗</a
+          ><button id="language" type="button">EN</button>
+        </nav>
+      </header>
+      <main id="main">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">
+              <span
+                data-tr="KÜÇÜK ARAÇ / GERÇEK BİR SORUN"
+                data-en="SMALL TOOL / A REAL FRICTION"
+                >KÜÇÜK ARAÇ / GERÇEK BİR SORUN</span
+              >
+            </p>
+            <h1>
+              <span
+                data-tr="Bir samimi cevaba yer aç."
+                data-en="Make room for one honest reply."
+                >Bir samimi cevaba yer aç.</span
+              >
+            </h1>
+            <p class="lead" id="lead"></p>
+          </div>
+          <div class="hero-mark" aria-hidden="true">≈</div>
+        </section>
+        <div id="storage-warning" class="warning" role="alert" hidden></div>
+        <div class="grid">
+          <section class="panel">
+            <div class="section-head">
+              <h2>
+                <span
+                  data-tr="Konuşmaya bir yer aç"
+                  data-en="Give a conversation a place"
+                  >Konuşmaya bir yer aç</span
+                >
+              </h2>
+              <button id="demo" type="button">
+                <span data-tr="Örnek" data-en="Sample">Örnek</span>
+              </button>
+            </div>
+            <form id="item-form">
+              <input type="hidden" id="edit-id" />
+              <div class="row">
+                <div class="field">
+                  <label for="name"
+                    ><span data-tr="İsim veya takma ad" data-en="Name or alias"
+                      >İsim veya takma ad</span
+                    ></label
+                  ><input id="name" maxlength="100" required />
+                </div>
+                <div class="field">
+                  <label for="channel"
+                    ><span data-tr="Kanal" data-en="Channel">Kanal</span></label
+                  ><select id="channel">
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="signal">Signal</option>
+                    <option value="sms">SMS</option>
+                    <option value="email" data-tr="E-posta" data-en="Email">
+                      E-posta
+                    </option>
+                    <option value="x">X</option>
+                    <option value="reddit">Reddit</option>
+                    <option value="other" data-tr="Diğer" data-en="Other">
+                      Diğer
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="topic"
+                  ><span
+                    data-tr="Hatırlamak istediğin konu"
+                    data-en="Context you want to remember"
+                    >Hatırlamak istediğin konu</span
+                  ></label
+                ><textarea
+                  id="topic"
+                  rows="2"
+                  maxlength="600"
+                  required
+                ></textarea>
+                <p class="hint">
+                  <span
+                    data-tr="Konuşmanın tamamı yerine kısa bir bağlam yeterli."
+                    data-en="A small context note is enough; no full transcript is needed."
+                    >Konuşmanın tamamı yerine kısa bir bağlam yeterli.</span
+                  >
+                </p>
+              </div>
+              <div class="row">
+                <div class="field">
+                  <label for="energy"
+                    ><span data-tr="Gereken enerji" data-en="Energy needed"
+                      >Gereken enerji</span
+                    ></label
+                  ><select id="energy">
+                    <option value="1" data-tr="Hafif" data-en="Light">
+                      Hafif
+                    </option>
+                    <option value="2" data-tr="Orta" data-en="Medium">
+                      Orta
+                    </option>
+                    <option value="3" data-tr="Yüksek" data-en="High">
+                      Yüksek
+                    </option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="minutes"
+                    ><span data-tr="Tahmini dakika" data-en="Estimated minutes"
+                      >Tahmini dakika</span
+                    ></label
+                  ><input
+                    id="minutes"
+                    type="number"
+                    min="1"
+                    max="30"
+                    value="2"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="field">
+                  <label for="priority"
+                    ><span data-tr="Senin önceliğin" data-en="Your priority"
+                      >Senin önceliğin</span
+                    ></label
+                  ><select id="priority">
+                    <option value="3" data-tr="Öncelikli" data-en="Priority">
+                      Öncelikli
+                    </option>
+                    <option
+                      value="2"
+                      selected
+                      data-tr="Normal"
+                      data-en="Normal"
+                    >
+                      Normal
+                    </option>
+                    <option value="1" data-tr="Acele değil" data-en="No rush">
+                      Acele değil
+                    </option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="when"
+                    ><span
+                      data-tr="Dönmek istediğin gün"
+                      data-en="Day you want to return"
+                      >Dönmek istediğin gün</span
+                    ></label
+                  ><input id="when" type="date" />
+                </div>
+              </div>
+              <div class="actions">
+                <button class="primary" type="submit">
+                  <span data-tr="Konuşmayı kaydet" data-en="Save conversation"
+                    >Konuşmayı kaydet</span
+                  ></button
+                ><button id="cancel-edit" type="button" hidden>
+                  <span data-tr="İptal" data-en="Cancel">İptal</span>
+                </button>
+              </div>
+            </form>
+          </section>
+          <section class="panel">
+            <div class="section-head">
+              <h2>
+                <span
+                  data-tr="Şu anki küçük grubun"
+                  data-en="Your small batch for now"
+                  >Şu anki küçük grubun</span
+                >
+              </h2>
+              <button id="markdown" type="button">Markdown ↓</button>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="capacity"
+                  ><span
+                    data-tr="Şu anki enerjin"
+                    data-en="Your energy right now"
+                    >Şu anki enerjin</span
+                  ></label
+                ><select id="capacity">
+                  <option value="1" data-tr="Hafif işler" data-en="Light tasks">
+                    Hafif işler
+                  </option>
+                  <option
+                    value="2"
+                    selected
+                    data-tr="Orta enerji"
+                    data-en="Medium energy"
+                  >
+                    Orta enerji
+                  </option>
+                  <option value="3" data-tr="Hazırım" data-en="Ready">
+                    Hazırım
+                  </option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="budget"
+                  ><span data-tr="Dakika bütçen" data-en="Minute budget"
+                    >Dakika bütçen</span
+                  ></label
+                ><input id="budget" type="number" min="1" max="30" value="10" />
+              </div>
+            </div>
+            <div id="metrics" class="metrics"></div>
+            <p class="note">
+              <span
+                data-tr="En fazla üç konuşma; enerji ve süre bütçene uyanlar. Gelecek tarihe ayırdıkların bekler. Taslaklar yalnızca başlangıçtır, göndermeden önce kendi sözlerinle düzenle."
+                data-en="At most three conversations that fit your energy and time. Future follow-ups wait. Drafts are starting points; edit them in your own voice before sending."
+                >En fazla üç konuşma; enerji ve süre bütçene uyanlar. Gelecek
+                tarihe ayırdıkların bekler. Taslaklar yalnızca başlangıçtır,
+                göndermeden önce kendi sözlerinle düzenle.</span
+              >
+            </p>
+            <div id="batch" class="stack"></div>
+            <section id="draft-panel" class="lanes" hidden>
+              <div class="section-head">
+                <h2 id="draft-heading"></h2>
+                <button id="close-draft" type="button">
+                  <span data-tr="Kapat" data-en="Close">Kapat</span>
+                </button>
+              </div>
+              <p id="draft-context" class="hint"></p>
+              <div class="tabs" id="templates">
+                <button type="button" data-template="ack">
+                  <span data-tr="Gördüm, döneceğim" data-en="Acknowledge"
+                    >Gördüm, döneceğim</span
+                  ></button
+                ><button type="button" data-template="reconnect">
+                  <span data-tr="Yeniden haberleş" data-en="Reconnect"
+                    >Yeniden haberleş</span
+                  ></button
+                ><button type="button" data-template="boundary">
+                  <span data-tr="Sınır koy" data-en="Set a boundary"
+                    >Sınır koy</span
+                  >
+                </button>
+              </div>
+              <label for="draft"
+                ><span
+                  data-tr="Düzenlenebilir taslağın"
+                  data-en="Your editable draft"
+                  >Düzenlenebilir taslağın</span
+                ></label
+              ><textarea id="draft" maxlength="2000" rows="4"></textarea>
+              <div class="actions spaced">
+                <button id="copy-draft" type="button">
+                  <span data-tr="Taslağı kopyala" data-en="Copy draft"
+                    >Taslağı kopyala</span
+                  ></button
+                ><button id="calendar" type="button">
+                  <span data-tr="Takvim dosyası" data-en="Calendar file"
+                    >Takvim dosyası</span
+                  ></button
+                ><button id="replied" type="button" class="primary">
+                  <span
+                    data-tr="Dışarıda cevapladım"
+                    data-en="I replied outside the app"
+                    >Dışarıda cevapladım</span
+                  >
+                </button>
+              </div>
+            </section>
+            <section class="lanes">
+              <div class="section-head">
+                <h2>
+                  <span data-tr="Konuşma limanı" data-en="Conversation harbor"
+                    >Konuşma limanı</span
+                  >
+                </h2>
+              </div>
+              <label for="search"
+                ><span
+                  data-tr="İsim veya konu ara"
+                  data-en="Search name or context"
+                  >İsim veya konu ara</span
+                ></label
+              ><input id="search" type="search" class="search" />
+              <div id="tabs" class="tabs" role="group"></div>
+              <div id="items" class="stack"></div>
+            </section>
+          </section>
+        </div>
+        <section class="portability">
+          <div>
+            <h2>
+              <span
+                data-tr="Verin seninle kalsın"
+                data-en="Keep your data with you"
+                >Verin seninle kalsın</span
+              >
+            </h2>
+            <p>
+              <span
+                data-tr="Bu tarayıcıda yerel kayıt. Başka bir cihaza geçmeden önce JSON yedeğini indir."
+                data-en="Stored in this browser. Download a JSON backup before moving to another device."
+                >Bu tarayıcıda yerel kayıt. Başka bir cihaza geçmeden önce JSON
+                yedeğini indir.</span
+              >
+            </p>
+          </div>
+          <div class="actions">
+            <button id="backup" type="button">
+              <span data-tr="JSON yedek" data-en="JSON backup"
+                >JSON yedek</span
+              ></button
+            ><label class="file-button" for="import"
+              ><span data-tr="Yedek yükle" data-en="Restore backup"
+                >Yedek yükle</span
+              ></label
+            ><input
+              id="import"
+              type="file"
+              accept="application/json,.json"
+            /><button id="reset" type="button" class="quiet">
+              <span data-tr="Kayıtları sil" data-en="Clear records"
+                >Kayıtları sil</span
+              >
+            </button>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <details>
+          <summary>
+            <span
+              data-tr="Gizlilik, kullanım ve araştırma"
+              data-en="Privacy, use and research"
+              >Gizlilik, kullanım ve araştırma</span
+            >
+          </summary>
+          <p>
+            <span
+              data-tr="İçeriklerin sunucuya gönderilmez. Yerel kayıt şifreli değildir; tarayıcı verileri silinirse kayıtlar da silinir. Dış bağlantılar yalnızca sen açtığında ziyaret edilir. İlk çevrimiçi ziyaretten sonra uygulama arayüzü çevrimdışı açılabilir; bağlantı verdiğin sayfalar önbelleğe alınmaz."
+              data-en="Your content is not sent to a server. Local storage is unencrypted; clearing browser data removes records. External pages are visited only when you open their links. After a first online visit the app interface can open offline; linked pages are not cached."
+              >İçeriklerin sunucuya gönderilmez. Yerel kayıt şifreli değildir;
+              tarayıcı verileri silinirse kayıtlar da silinir. Dış bağlantılar
+              yalnızca sen açtığında ziyaret edilir. İlk çevrimiçi ziyaretten
+              sonra uygulama arayüzü çevrimdışı açılabilir; bağlantı verdiğin
+              sayfalar önbelleğe alınmaz.</span
+            >
+          </p>
+          <p>
+            <span
+              data-tr="Örnekler kurgusaldır. Bu bir Twitter/X, Reddit veya mesajlaşma hesabı entegrasyonu değildir. Kaynaklar keşif amaçlıdır; tüm toplumu temsil etmez."
+              data-en="Examples are fictional. This is not a Twitter/X, Reddit or messaging account integration. Sources are exploratory and do not represent entire communities."
+              >Örnekler kurgusaldır. Bu bir Twitter/X, Reddit veya mesajlaşma
+              hesabı entegrasyonu değildir. Kaynaklar keşif amaçlıdır; tüm
+              toplumu temsil etmez.</span
+            >
+          </p>
+          <a
+            href="https://github.com/metealpkarvan/reply-harbor/blob/main/docs/RESEARCH.md"
+            ><span
+              data-tr="Araştırma ve tasarım gerekçesi"
+              data-en="Research and design rationale"
+              >Araştırma ve tasarım gerekçesi</span
+            >
+            ↗</a
+          >
+        </details>
+        <p>© 2026 Mete Alp Karvan · MIT · 1.0.0</p>
+      </footer>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
